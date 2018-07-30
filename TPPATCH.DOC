@@ -1,0 +1,93 @@
+Inzwischen wisst ihr ja alle von dem Bug in der Unit Crt, der auf sehr  
+schnellen Computern (PPro 200Mhz+) einen Runtime-Error 200 ausl”st.
+Der Fehler liegt im Startupcode von Delay(), bei einer Division wird das  
+Ergebnis zu groá und passt nicht mehr in das Zielregister.
+
+Ich habe jetzt in den letzten Tagen einen Bugfix geschrieben, der alle mit  
+Pascal kompilierte EXE-Dateien patchen kann, darunter auch *Crosspoint*.
+Dieses Verfahren funktioniert auch bei Programmen fr den Protected Mode.
+
+Um Programme zu fixen, die im Quelltext vorliegen, kann man auch andere
+Verfahren, insbesondere das Ersetzen von Delay(), anwenden.
+
+Dadurch l„uft Delay auf allen langsamen Maschinen weiterhin korrekt,  
+ebenso wie auf Maschinen mit 200Mhz. Wenn es dann bald noch schnellere  
+Prozessoren gibt, wartet Delay() auf diesen dann aber etwas zu wenig, aber  
+abstrzen wird diese Stelle auf keinen Fall mehr.
+
+Hier jetzt die Erkl„rung:
+
+>530B:0087 E83C02         call   02C6
+>530B:008A F7D0           not    ax
+>530B:008C F7D2           not    dx
+>530B:008E B93700         mov    cx,0037
+>530B:0091 F7F1           div    cx
+                          ^^^^^^^^^
+>530B:0093 A35C00         mov    [005C],ax
+
+Diese Division an der Stelle CS:0091 bzw. CS:0099 verursacht eine  
+Exception #0 und damit einen Runtime-Error 200.
+Die erste Prozedur (hier bei CS:0087) ermittelt, wie weit die CPU einen  
+Z„hler in ca. 55ms herunterz„hlen kann. Durch die beiden folgenden NOT- 
+Befehle wird der Wert negiert und dann durch 55 geteilt. (37h=55d)
+Dieser Wert, der dann in einer Variablen (hier [005C]) gespeichert wird,  
+wird sp„ter in Delay() verwendet, um 1ms zu warten.
+
+Ich habe die Stelle so abge„ndert:
+
+>  cs:007E E88501         call   ....
+>  cs:0081 F7D0           not    ax
+>  cs:0083 F7D2           not    dx
+>  cs:0085 B93700         mov    cx,0037
+>  cs:0088 3BD1           cmp    dx,cx
+>  cs:008A 7205           jb     0091
+>  cs:008C B8FFFF         mov    ax,FFFF
+>  cs:008F EB02           jmp    0093
+>  cs:0091 F7F1           div    cx
+>  cs:0093 A35C00         mov    [005C],ax
+
+Dadurch wird verhindert, dass das Ergebnis sp„ter gr”áer als ein Word  
+wird. Natrlich musste ich dazu einige Befehle einfgen. Um den Code nicht  
+komplett verschieben zu mssen, habe ich einige Nachl„ssigkeiten der  
+Programmierer von BP/TP ausgenutzt, um vorher einige Bytes einzusparen,  
+z.B.:
+
+vorher:
+
+>  cs:0062 33C0           xor    ax,ax
+>  cs:0064 A25100         mov    [0051],al
+>  cs:0067 A26100         mov    [0061],al
+>  cs:006A A26200         mov    [0062],al
+>  cs:006D 40             inc    ax
+>  cs:006E A25000         mov    [0050],al
+
+nachher:
+
+>  cs:0062 33C0           xor    ax,ax
+>  cs:0064 A36100         mov    [0061],ax
+>  cs:0067 40             inc    ax
+>  cs:0068 A35000         mov    [0050],ax
+
+
+Das Programm (TPPATCH.EXE) berprft die zu patchende Datei genau, damit  
+nicht eine EXE-Datei "zu Tode gepatcht wird". Die Positionen der Variablen  
+werden automatisch gescannt, daher sollte der Patch mit allen Versionen  
+von TP7/BP7 arbeiten. Ich habe es nicht mit TP6 getestet (das habe ich  
+nicht). Es w„re m”glich, das es auch dessen Dateien patchen kann.
+-> Jedes Feedback ber dieses Programm ist natrlich willkommen.
+
+Das ganze ist natrlich nur notwendig, wenn auch die Unit CRT eingebunden  
+wurde.
+
+Man kann durchaus per Batchdatei alle Dateien auf der Festplatte versuchen  
+zu patchen, denn es TPPATCH fhrt zuerst eine ganze Reihe von Tests durch,  
+es wird also keiner anderen Datei ein Haar gekrmmt.
+
+Gepackte EXE-Dateien mssen vor dem Patchen entpackt werden,
+z.B. mit UNP (ftp://garbo.uwasa.fi/pc/execomp/unp411.zip).
+
+Ich bernehme natrlich keine Verantwortung fr alles, was man damit  
+anstellen kann. Vor dem Patchen von fremden Programmen sollte man einen  
+Blick in die LICENSE.DOC etc. werfen.
+
+Andreas Bauer <andi.tio@hit.handshake.de>

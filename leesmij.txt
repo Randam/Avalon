@@ -1,0 +1,71 @@
+Description
+Avalon takes place in the future after the destruction of earth. A group of people known as the Avalon-cult flees to an distant planet called Avalon, which had an earth like climate. Unfortunately, one day their village was suddenly attacked by hundreds of strange creatures. The leader of the colonists, Lee, tried to negotiate with the monsters but was captured. A young man named Mace volunteers to seek for Lee and to find out what the monsters wanted in order to secure the safety of human life on the planet.
+
+The game itself is a console style RPG seen from an top-down view, where you solve puzzles, fight monsters and talk to the villagers. The battles are, like in many console RPGs, strategic and are turn-based.
+
+
+AVALON
+------
+
+INLEIDING
+	Gefeliciteerd! U bent in het bezit van hèt RPG spel, waar we al generaties lang op hebben
+	zitten wachten (ahum;-). Avalon is een RPG met de gameplay van een ouderwets spel zoals we 
+	die kenden van de MSX en andere homecomputers. Maar natuurlijk wel met wat nieuwe technologie 
+	van de PC. 
+
+
+MUZIEK & GELUID
+	Het spel ondersteund MIDI geluid op een wavetable-kaart. Dit houdt in dat u geen muziek
+	zult horen op de 16 bits geluidkaarten die geen wavetable hebben maar gelukkig worden
+	de Sounblaster 32/64/128 al steeds meer de standaard, en met deze kaarten werkt de
+	muziek het beste samen.
+
+	Het geluid (dus niet de muziek) heeft de volgende instellingen van de soundcard nodig:
+
+	poort: 220
+	IRQ:   5
+	DMA:   1
+
+	Dit is de standaard instelling op de meeste geluidskaarten.
+
+
+PROGRAMMERING
+	Het spel is geheel geprogrammeerd in Turbo Pascal en ik heb er ongeveer 2 jaar over gedaan
+	om het geheel af te krijgen. De muziek die tijdens het spel te horen is is gemaakt met
+	MiGTracker, ook een MiG productie. Alle muziek is ook door ons zelf gecomponeerd.
+	Alle code van Avalon is overigens op onze site te downloaden.
+
+
+MiG INFO
+	De MiG Groep heeft een homepage op: www.gironet.nl/home/roder. Op deze site is ook de
+	source te downloaden van zowel Avalon als MiGTracker en is het gehele verhaal van het
+	spel te lezen.
+
+	Ons e-mail adres is v972090@si.hhs.nl. Mail ons gerust als u vragen heeft met betrekking
+	tot het spel en/of de programmering.
+
+	Het spel Avalon is vrij te gebruiken evenals de sourcecode van het programma, maar ik zou
+	het op prijs stellen als de naam van de auteur (ik dus) niet wordt verwijderd. Ik heb er
+	tenslotte niet voor niets zo lang aan gewerkt ;-)
+	
+
+TROUBLE-SHOOTING
+	1. Als het spel niet wil werken vanwege één of andere runtime-error dan is het zinvol om
+	   het eens zonder geluid te proberen. Dit kunt u doen door de file AVALON.CFG aan te
+	   passen.
+
+	2. Soms zit de USB-poort van de computer in de weg met de IRQ, dit is in de BIOS uit te 
+	   schakelen, waarna onder Windows 95/98 wel weer de instelling 200/5/1 gekozen kan worden.
+
+	3. Zorg wel dat als u met het geluid AAN speelt, dat de instellingen altijd:
+	   poort:220 IRQ: 5 DMA: 1 zijn, want anders zal het spel niet werken. Ik heb helaas de 
+	   sourcecode van de geluids-unit niet meer, anders had ik hier wel wat aan gedaan.
+	   De sound-unit die ik gebruikte is trouwens DSP.TPU, dus als iemand de source-code daarvan
+	   heeft dan zou ik daar uiteraard erg blij mee zijn!
+
+
+NAMEN EN GROETEN
+	
+	Avalon is (p) 1998/1999 MiG.  
+	Code: Jeroen Derwort
+	Graphics: Bowie Derwort

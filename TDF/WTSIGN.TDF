@@ -1,0 +1,144 @@
+*
+1
+1
+Mace reads the sign:
+"Hrms fhfdh dfafgn sdajefujfh
+hgshd fs f sidf sdfdfhgz dgasss..."
+Û
+
+
+[MACE]
+I can't read this... maybe if I use
+the translator.
+Û
+
+
+Mace uses the translator....
+Û
+
+
+
+
+[TRANSLATOR]
+"They who dare to violate peace
+on this holy ground shall perish..."
+Û
+
+
+[MACE]
+I'd better be careful here !
+Û
+
+
+*
+2
+2
+The sign says:
+"They who dare to violate peace
+on this holy ground shall perish..."
+Û
+
+
+[MACE]
+I'd better be careful here !
+Û
+
+
+*
+3
+3
+Mace reads the sign:
+"Hagnagm tjenabl kronom anjanor hui
+kilonostovni rmoooj ojoosnaaah haao
+mantus santo."
+Û
+
+[MACE]
+I can't read this... maybe if I use
+the translator.
+Û
+
+
+[TRANSLATOR]
+"Only they who know the extent of our
+loss will be allowed to enter the
+Sacred Room."
+Û
+
+[MACE]
+I wonder what that means...
+Û
+
+
+*
+4
+4
+The sign says:
+"Only they who know the extent of our
+loss will be allowed to enter the
+Sacred Room."
+Û
+
+[MACE]
+I wonder what that means...
+Û
+
+
+*
+05
+05
+[MACE]
+What's this ?
+...wait a minute, this looks like some
+kind of terminal !
+Û
+
+[MACE]
+Maybe I can switch it on with this button.
+Û
+
+
+
+Mace presses a litte red button...
+Û
+
+
+
+*
+06
+06
+[TERMINAL]
+"Only they who know the extent of our
+loss will be allowed to enter the
+Sacred Room."
+Û
+
+[TERMINAL]
+You may now enter the access code.
+WARNING! A wrong code will be fatal.
+Û
+
+
+[TERMINAL]
+Do you wish to enter the code ?
+
+
+&
+*
+07
+07
+[TERMINAL]
+Access denied.
+
+Have a nice day !
+Û
+*
+08
+08
+[TERMINAL]
+Access code verified OK.
+Û
+
+
+*
+--------------------------------------------------------------------------
