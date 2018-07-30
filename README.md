@@ -1,6 +1,8 @@
 # Avalon
 Avalon DOS RPG was a game I worked on for two years, from 1996 to 1998. It is fully finished and playable. Avalon has seen well over 200k downloads from various freeware and shareware websites. In 2000 it won the ZDNet Shareware Award as best strategy game.
 
+![Avalon Screen 1](https://www.avalonrpg.net/images/screens/item%20shop.png "Avalon Item Shop") ![Avalon Screen 2](https://www.avalonrpg.net/images/screens/mace%20in%20boat.png "Avalon Boat")
+
 ## Why did I put this on GitHub?
 From the start, I have made the entire sourcecode available. So why not put it on the largest repository of free sourcecode in the world? I can think of a few reasons actually:
 1. This code is very old. 
