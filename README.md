@@ -5,7 +5,7 @@ Avalon DOS RPG was a game I worked on for two years, from 1996 to 1998. It is fu
 From the start, I have made the entire sourcecode available. So why not put it on the largest repository of free sourcecode in the world? I can think of a few reasons actually:
 1. This code is very old. 
 2. It was written in Turbo Pascal, a dead procedural language for real mode DOS. 
-3. The game is not even playable anymore on a PC nowadays without running Doxbox.
+3. The game is not even playable anymore on a PC nowadays without running Dosbox.
 4. I was 16 when I wrote most of it (hence the many spelling mistakes).
 
 That's why it took so long. But in the end, I decided to put it here after all. Why?
